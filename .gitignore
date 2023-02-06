@@ -43,3 +43,6 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# Visual Studio config files
+.vscode
