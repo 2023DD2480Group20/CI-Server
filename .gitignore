@@ -46,3 +46,6 @@ gradle-app.setting
 
 # Visual Studio config files
 .vscode
+
+# IntelliJ Idea config files
+.idea
