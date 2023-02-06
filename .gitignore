@@ -27,3 +27,20 @@ hs_err_pid*
 
 # Ignore Gradle build output directory
 build
+
+# The following lines are copied from https://github.com/github/gitignore/blob/main/Gradle.gitignore
+.gradle
+**/build/
+!src/**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
+# Cache of project
+.gradletasknamecache
