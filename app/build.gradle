@@ -39,6 +39,9 @@ dependencies {
     implementation files('libs/servlet-api-2.5.jar')
     implementation files('libs/jetty-all-7.0.2.v20100331.jar')
 
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
 }
 
 application {
