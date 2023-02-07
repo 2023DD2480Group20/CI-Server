@@ -6,7 +6,12 @@ import java.io.InputStreamReader;
 public class App {
 
     public static void main(String[] args){
-//        ContinuousIntegrationServer.startServer();
+        try {
+        ContinuousIntegrationServer.startServer();
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+    /*try{
         String s;
         Process p;
         try {
@@ -26,7 +31,7 @@ public class App {
             p.destroy();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 }
