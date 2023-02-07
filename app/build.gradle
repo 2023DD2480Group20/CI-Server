@@ -42,6 +42,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
     testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
 
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20220924'
+
 }
 
 application {
