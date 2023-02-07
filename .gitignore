@@ -49,3 +49,6 @@ gradle-app.setting
 
 # IntelliJ Idea config files
 .idea
+
+# The ngrok executable
+ngrok
