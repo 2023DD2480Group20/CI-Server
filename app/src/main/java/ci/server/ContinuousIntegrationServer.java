@@ -45,6 +45,7 @@ Technical documentation:
 */
 public class ContinuousIntegrationServer extends AbstractHandler
 {
+    //String that holds the branch name
     String branch = "";
     public void handle(String target,
                        Request baseRequest,
@@ -70,6 +71,7 @@ public class ContinuousIntegrationServer extends AbstractHandler
             BufferedReader reader = request.getReader();
             String line = reader.readLine();
             
+            //Object to hold the json fields from the webhook
             JSONObject jsonObject = new JSONObject(line);
             String temp = jsonObject.getString("ref");
             branch = temp.split("/")[2];
