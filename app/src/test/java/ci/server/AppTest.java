@@ -3,6 +3,9 @@
  */
 package ci.server;
 
+import DTO.TunnelsDTO;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -11,12 +14,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.matchesPattern;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 
 
 class AppTest {
@@ -40,6 +47,31 @@ class AppTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    @Test void ngrokConnectionIsOpen(){
+
+        try {
+            Process p;
+            p = Runtime.getRuntime().exec("curl localhost:4040/api/tunnels");
+            BufferedReader brOut = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String output = brOut.readLine();
+            p.waitFor();
+            p.destroy();
+
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+            TunnelsDTO tunnelsObj = mapper.readValue(output, TunnelsDTO.class);
+
+            assertThat(tunnelsObj.tunnels, contains( allOf(
+                    hasProperty("name", equalTo("command_line")),
+                    // The regex below is a mess, but I don't know how to escape the dots any way else
+                    hasProperty("public_url", matchesPattern("^https:.*[.]ngrok[.]io")))
+                )
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
