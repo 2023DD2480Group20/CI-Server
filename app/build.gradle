@@ -23,19 +23,7 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
 
-    // // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-    // compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '2.5'
-
-    // // https://mvnrepository.com/artifact/javax.servlet/servlet-api
-    // compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.5'
-
-    // // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-    // compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-
-
-    // // https://mvnrepository.com/artifact/org.eclipse.jetty.aggregate/jetty-all
-    // testImplementation group: 'org.eclipse.jetty.aggregate', name: 'jetty-all', version: '7.0.2.v20100331'
-
+    // Dependencies on files provided by https://github.com/KTH-DD2480/smallest-java-ci
     implementation files('libs/servlet-api-2.5.jar')
     implementation files('libs/jetty-all-7.0.2.v20100331.jar')
 
