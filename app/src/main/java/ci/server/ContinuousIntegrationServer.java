@@ -7,8 +7,11 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 
+import org.json.*;
 /** 
  Skeleton of a ContinuousIntegrationServer which acts as webhook
  See the Jetty documentation for API documentation of those classes.
@@ -42,6 +45,8 @@ Technical documentation:
 */
 public class ContinuousIntegrationServer extends AbstractHandler
 {
+    //String that holds the branch name
+    String branch = "";
     public void handle(String target,
                        Request baseRequest,
                        HttpServletRequest request,
@@ -61,8 +66,19 @@ public class ContinuousIntegrationServer extends AbstractHandler
         // 3. Parse and run commands
         // 4. Notify github of result
         // 5. Update database
-
-
+        
+        try{
+            BufferedReader reader = request.getReader();
+            String line = reader.readLine();
+            
+            //Object to hold the json fields from the webhook
+            JSONObject jsonObject = new JSONObject(line);
+            String temp = jsonObject.getString("ref");
+            branch = temp.split("/")[2];
+            System.out.println(branch);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         response.getWriter().println("CI job done");
     }
