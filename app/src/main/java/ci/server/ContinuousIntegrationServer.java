@@ -79,13 +79,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         // 5. Update database
 
         try {
+            //Webhooks can have different types, ping for the first connection and then push for commit events
             String type = request.getHeader("X-GitHub-Event");
-            System.out.println("Type :" + type);
             BufferedReader reader = request.getReader();
             webhookData = getJSON(reader);
             branch = extractBranchName(webhookData, type);
-            
-            System.out.println(branch);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,6 +110,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     /**
      * Extract a branch name from JSONObject holding github webhook data
      * @param json The JSONObject holding the data
+     * @param type The event type, usually "push" or "ping"
      * @return The name of the branch in String format
      */
     public static String extractBranchName(JSONObject json, String type) {
@@ -119,7 +118,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             String temp = json.getString("ref");
             return temp.split("/")[2];
         } else{
-            return "NOPE";
+            return "";
         }  
     }
 

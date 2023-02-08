@@ -53,8 +53,21 @@ public class ContinuousIntegrationServerTest {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        System.out.println(ContinuousIntegrationServer.extractBranchName(json));
-        assertThat(ContinuousIntegrationServer.extractBranchName(json), equalTo("readbranch"));
+
+        assertThat(ContinuousIntegrationServer.extractBranchName(json,"push"), equalTo("readbranch"));
+    }
+
+    @Test void branchNamePingEventTest(){
+        String payload = "";
+        JSONObject json = null;
+        try{
+            payload = new String(Files.readAllBytes(Paths.get("examplePayload.json")));
+            json = new JSONObject(payload);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        assertThat(ContinuousIntegrationServer.extractBranchName(json,"ping"), equalTo(""));
     }
 
 }
