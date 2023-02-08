@@ -27,51 +27,5 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 class AppTest {
-    // Tests whether the assessment branch has been created and checked out to after the app is run
-   /*  @Test void appCreatesAssessmentBranch() {
-        App.main(new String[]{});
 
-        String s;
-        Process p;
-        try {
-            p = Runtime.getRuntime().exec("git branch");
-            BufferedReader brOut = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            ArrayList<String> outputs = new ArrayList<>();
-
-            while ((s = brOut.readLine()) != null)
-                outputs.add(s.trim());
-            p.waitFor();
-            p.destroy();
-
-            assertThat(outputs, hasItem("* assessment"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test void ngrokConnectionIsOpen(){
-
-        try {
-            Process p;
-            p = Runtime.getRuntime().exec("curl localhost:4040/api/tunnels");
-            BufferedReader brOut = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String output = brOut.readLine();
-            p.waitFor();
-            p.destroy();
-
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-            TunnelsDTO tunnelsObj = mapper.readValue(output, TunnelsDTO.class);
-
-            assertThat(tunnelsObj.tunnels, contains( allOf(
-                    hasProperty("name", equalTo("command_line")),
-                    // The regex below is a mess, but I don't know how to escape the dots any way else
-                    hasProperty("public_url", matchesPattern("^https:.*[.]ngrok[.]io")))
-                )
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 }
