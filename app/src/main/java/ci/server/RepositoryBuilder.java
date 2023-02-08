@@ -14,6 +14,8 @@ import java.nio.file.*;
  */
 public final class RepositoryBuilder {
     public final Repository repository;
+    public final File local_directory;
+
 
     /**
      * Class constructor
@@ -25,6 +27,8 @@ public final class RepositoryBuilder {
     public RepositoryBuilder(String repoUrl, String branchRef, String ID){
         File cloneDirectoryPath = new File("./" + ID);
         this.repository = git_clone_repository(repoUrl, branchRef, cloneDirectoryPath);
+        //TODO not sure if I should getDirectory or other
+        this.local_directory = repository.getDirectory();
     }
 
     /**
