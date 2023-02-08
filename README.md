@@ -41,3 +41,5 @@ This requires your system to have a valid gradle installation.
 ### Contributions
 
 ### Essence
+
+By assessing our team according to the Essence standard, we can say that we are currently in the state "Collaborating". The team is past the states of "Seeded" and "Formed" as the team itself has been defined already. There are set ways of working the team follows and the organizing is clear. The team is also able to communicate openly about questions, issues etc. Furthermore, our team now know a bit about each other and people can trust other team mates. In order for our team to reach the state "Performing" there might have to be a bit more work being done independently without input from others so that work can be done more efficiently.
