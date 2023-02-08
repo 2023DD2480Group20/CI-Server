@@ -26,16 +26,20 @@ import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInA
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.json.*;
+
 public class ContinuousIntegrationServerTest {
     @Test void branchNameTest(){
         String payload = "";
+        JSONObject json = null;
         try{
             payload = new String(Files.readAllBytes(Paths.get("examplePayload.json")));
+            json = new JSONObject(payload);
         } catch(Exception e) {
             e.printStackTrace();
         }
-
-        assertThat(ContinuousIntegrationServer.extractBranchName(payload), equalTo("readbranch"));
+        System.out.println(ContinuousIntegrationServer.extractBranchName(json));
+        assertThat(ContinuousIntegrationServer.extractBranchName(json), equalTo("readbranch"));
     }
 
 }
