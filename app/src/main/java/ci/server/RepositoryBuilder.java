@@ -8,6 +8,8 @@ import org.eclipse.jgit.lib.*;
 import java.io.*;
 import java.nio.file.*;
 
+import org.apache.commons.io.FileUtils;
+
 /**
  * All functions related to Git RepositoryBuilder (cloning and updating)
  *
@@ -24,6 +26,9 @@ public final class RepositoryBuilder {
      */
     public RepositoryBuilder(String repoUrl, String branchRef, String ID){
         File cloneDirectoryPath = new File("./" + ID);
+        if(cloneDirectoryPath.length() != 0){
+            deleteClone(cloneDirectoryPath);
+        }
         this.repository = git_clone_repository(repoUrl, branchRef, cloneDirectoryPath);
     }
 
@@ -51,6 +56,26 @@ public final class RepositoryBuilder {
             return null;
         }
         return git_repository.getRepository();
+    }
+
+    public void deleteClone(){
+        if(this.repository != null){
+            try{
+                FileUtils.deleteDirectory(this.repository.getDirectory());
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void deleteClone(File file){
+        if(file != null){
+            try{
+                FileUtils.deleteDirectory(file);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
 }
