@@ -14,7 +14,7 @@ import java.net.http.HttpResponse.BodyHandlers;
  *
  */
 public class Notify {
-    static String getStatus (String owner, String repo, String ref) {
+    /*static String getStatus (String owner, String repo, String ref) {
         try {
             HttpRequest getRequest = HttpRequest.newBuilder().uri(new URI("https://api.github.com/repos/" + owner + "/" + repo +"/commits/" + ref + "/status")).build();
 
@@ -26,18 +26,18 @@ public class Notify {
         } catch (Exception e) {
             return "Error: " + e;
         } 
-    }
+    }*/
 
     //Used to change a commit based on the sha of the commit to the state parameter
     //(failure, error, pending, success)
-    static String changeStatus (String owner, String repo, String sha, String state) {
+    public static String changeStatus (String sha, String state) {
         try {
             String json = "{\"state\":\"" + state + "\"}";
             
             //Authentication token is required to change the commit status
             String authToken = "";
 
-            HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://api.github.com/repos/" + owner + "/" + repo + "/statuses/" + sha)).header("Authorization", "Bearer " + authToken).POST(BodyPublishers.ofString(json)).build();
+            HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://api.github.com/repos/2023DD2480Group20/Ci-Server/statuses/" + sha)).header("Authorization", "Bearer " + authToken).POST(BodyPublishers.ofString(json)).build();
 
             HttpClient httpClient = HttpClient.newHttpClient();
 
@@ -47,16 +47,5 @@ public class Notify {
         } catch (Exception e) {
             return "Error: " + e;
         } 
-    }
-
-    public static void main(String[] args) {
-
-        String own = "2023DD2480Group20";
-        String rep = "Ci-Server";
-        String ref = "79e52d36ead03613d4c4c3e2df1d41e1663cd3a3";
-
-        System.out.println(getStatus(own, rep, ref) + "\n\n");
-        System.out.println(changeStatus(own, rep, ref, "success")  + "\n\n");
-        System.out.println(getStatus(own, rep, ref));
     }
 }
