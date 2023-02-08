@@ -55,6 +55,7 @@ import org.json.*;
 public class ContinuousIntegrationServer extends AbstractHandler {
     // String that holds the branch name
     String branch = "";
+    static String sha = "";
 
     // Object to hold the json fields from the webhook
     JSONObject webhookData;
@@ -83,13 +84,16 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             String type = request.getHeader("X-GitHub-Event");
             BufferedReader reader = request.getReader();
             webhookData = getJSON(reader);
+            System.out.println("This is the json: " + webhookData);
             branch = extractBranchName(webhookData, type);
+            sha = extractCommitSha(webhookData, type);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         response.getWriter().println("CI job done");
         response.getWriter().println("name: " + branch);
+        response.getWriter().println("sha: " + sha);
     }
 
     /**
@@ -120,6 +124,18 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         } else{
             return "";
         }  
+    }
+
+    public static String extractCommitSha(JSONObject json, String type) {
+        if(type.equals("push")){
+            return json.getString("after");
+        } else{
+            return "";
+        }  
+    }
+
+    public static void notifyResults (String res) {
+        System.out.println(Notify.changeStatus(sha, res));
     }
 
     // used to start the CI server in command line
