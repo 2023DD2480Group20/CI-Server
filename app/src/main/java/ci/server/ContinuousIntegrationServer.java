@@ -70,19 +70,21 @@ public class ContinuousIntegrationServer extends AbstractHandler
         try{
             BufferedReader reader = request.getReader();
             String line = reader.readLine();
-            
-            //Object to hold the json fields from the webhook
-            JSONObject jsonObject = new JSONObject(line);
-            String temp = jsonObject.getString("ref");
-            branch = temp.split("/")[2];
-            System.out.println(branch);
+            branch = extractBranchName(line);
         } catch (Exception e){
             e.printStackTrace();
         }
 
         response.getWriter().println("CI job done");
     }
- 
+
+    public static String extractBranchName(String input){
+        //Object to hold the json fields from the webhook
+        JSONObject jsonObject = new JSONObject(input);
+        String temp = jsonObject.getString("ref");
+        return temp.split("/")[2];
+    }
+
     // used to start the CI server in command line
     public static void startServer() throws Exception
     {

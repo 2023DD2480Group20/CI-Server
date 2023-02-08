@@ -1,0 +1,211 @@
+{
+  "ref": "refs/heads/readbranch",
+  "before": "02c040e2e2b6d35ea29ce6815082d40bcb96bc3a",
+  "after": "22a43014e5d79a491990291a201d0f2afcbf61a5",
+  "repository": {
+    "id": 597395839,
+    "node_id": "R_kgDOI5uJfw",
+    "name": "CI-Server",
+    "full_name": "2023DD2480Group20/CI-Server",
+    "private": false,
+    "owner": {
+      "name": "2023DD2480Group20",
+      "email": null,
+      "login": "2023DD2480Group20",
+      "id": 124514820,
+      "node_id": "O_kgDOB2vyBA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/124514820?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/2023DD2480Group20",
+      "html_url": "https://github.com/2023DD2480Group20",
+      "followers_url": "https://api.github.com/users/2023DD2480Group20/followers",
+      "following_url": "https://api.github.com/users/2023DD2480Group20/following{/other_user}",
+      "gists_url": "https://api.github.com/users/2023DD2480Group20/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/2023DD2480Group20/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/2023DD2480Group20/subscriptions",
+      "organizations_url": "https://api.github.com/users/2023DD2480Group20/orgs",
+      "repos_url": "https://api.github.com/users/2023DD2480Group20/repos",
+      "events_url": "https://api.github.com/users/2023DD2480Group20/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/2023DD2480Group20/received_events",
+      "type": "Organization",
+      "site_admin": false
+    },
+    "html_url": "https://github.com/2023DD2480Group20/CI-Server",
+    "description": "This is an assignment for the course DD2480 on KTH.",
+    "fork": false,
+    "url": "https://github.com/2023DD2480Group20/CI-Server",
+    "forks_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/forks",
+    "keys_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/teams",
+    "hooks_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/hooks",
+    "issue_events_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/events",
+    "assignees_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/tags",
+    "blobs_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/languages",
+    "stargazers_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/stargazers",
+    "contributors_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/contributors",
+    "subscribers_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/subscribers",
+    "subscription_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/subscription",
+    "commits_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/merges",
+    "archive_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/downloads",
+    "issues_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/labels{/name}",
+    "releases_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/2023DD2480Group20/CI-Server/deployments",
+    "created_at": 1675513357,
+    "updated_at": "2023-02-05T15:37:32Z",
+    "pushed_at": 1675807296,
+    "git_url": "git://github.com/2023DD2480Group20/CI-Server.git",
+    "ssh_url": "git@github.com:2023DD2480Group20/CI-Server.git",
+    "clone_url": "https://github.com/2023DD2480Group20/CI-Server.git",
+    "svn_url": "https://github.com/2023DD2480Group20/CI-Server",
+    "homepage": null,
+    "size": 1329,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "Java",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "has_pages": false,
+    "has_discussions": false,
+    "forks_count": 0,
+    "mirror_url": null,
+    "archived": false,
+    "disabled": false,
+    "open_issues_count": 7,
+    "license": null,
+    "allow_forking": true,
+    "is_template": false,
+    "web_commit_signoff_required": false,
+    "topics": [
+
+    ],
+    "visibility": "public",
+    "forks": 0,
+    "open_issues": 7,
+    "watchers": 0,
+    "default_branch": "main",
+    "stargazers": 0,
+    "master_branch": "main",
+    "organization": "2023DD2480Group20"
+  },
+  "pusher": {
+    "name": "pontuspr",
+    "email": "pontus@pruzelius.se"
+  },
+  "organization": {
+    "login": "2023DD2480Group20",
+    "id": 124514820,
+    "node_id": "O_kgDOB2vyBA",
+    "url": "https://api.github.com/orgs/2023DD2480Group20",
+    "repos_url": "https://api.github.com/orgs/2023DD2480Group20/repos",
+    "events_url": "https://api.github.com/orgs/2023DD2480Group20/events",
+    "hooks_url": "https://api.github.com/orgs/2023DD2480Group20/hooks",
+    "issues_url": "https://api.github.com/orgs/2023DD2480Group20/issues",
+    "members_url": "https://api.github.com/orgs/2023DD2480Group20/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/2023DD2480Group20/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/124514820?v=4",
+    "description": null
+  },
+  "sender": {
+    "login": "pontuspr",
+    "id": 11270295,
+    "node_id": "MDQ6VXNlcjExMjcwMjk1",
+    "avatar_url": "https://avatars.githubusercontent.com/u/11270295?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/pontuspr",
+    "html_url": "https://github.com/pontuspr",
+    "followers_url": "https://api.github.com/users/pontuspr/followers",
+    "following_url": "https://api.github.com/users/pontuspr/following{/other_user}",
+    "gists_url": "https://api.github.com/users/pontuspr/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/pontuspr/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/pontuspr/subscriptions",
+    "organizations_url": "https://api.github.com/users/pontuspr/orgs",
+    "repos_url": "https://api.github.com/users/pontuspr/repos",
+    "events_url": "https://api.github.com/users/pontuspr/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/pontuspr/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "created": false,
+  "deleted": false,
+  "forced": false,
+  "base_ref": null,
+  "compare": "https://github.com/2023DD2480Group20/CI-Server/compare/02c040e2e2b6...22a43014e5d7",
+  "commits": [
+    {
+      "id": "22a43014e5d79a491990291a201d0f2afcbf61a5",
+      "tree_id": "936eee0ba1c1a7a4757b0dcb3d5ff974cd9bdd6c",
+      "distinct": true,
+      "message": "Doc: documented variables",
+      "timestamp": "2023-02-07T23:01:23+01:00",
+      "url": "https://github.com/2023DD2480Group20/CI-Server/commit/22a43014e5d79a491990291a201d0f2afcbf61a5",
+      "author": {
+        "name": "Pontus",
+        "email": "pontuspr@kth.se",
+        "username": "pontuspr"
+      },
+      "committer": {
+        "name": "Pontus",
+        "email": "pontuspr@kth.se",
+        "username": "pontuspr"
+      },
+      "added": [
+
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "app/src/main/java/ci/server/ContinuousIntegrationServer.java"
+      ]
+    }
+  ],
+  "head_commit": {
+    "id": "22a43014e5d79a491990291a201d0f2afcbf61a5",
+    "tree_id": "936eee0ba1c1a7a4757b0dcb3d5ff974cd9bdd6c",
+    "distinct": true,
+    "message": "Doc: documented variables",
+    "timestamp": "2023-02-07T23:01:23+01:00",
+    "url": "https://github.com/2023DD2480Group20/CI-Server/commit/22a43014e5d79a491990291a201d0f2afcbf61a5",
+    "author": {
+      "name": "Pontus",
+      "email": "pontuspr@kth.se",
+      "username": "pontuspr"
+    },
+    "committer": {
+      "name": "Pontus",
+      "email": "pontuspr@kth.se",
+      "username": "pontuspr"
+    },
+    "added": [
+
+    ],
+    "removed": [
+
+    ],
+    "modified": [
+      "app/src/main/java/ci/server/ContinuousIntegrationServer.java"
+    ]
+  }
+}
