@@ -28,7 +28,7 @@ To only run the tests, one can run the command:
 gradle test
 ```
 
-This requires the system to have a valid gradle installation.
+This requires the system to have gradle version 7.2 or higher installed.
 
 ### Credits
 
