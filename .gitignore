@@ -52,3 +52,6 @@ gradle-app.setting
 
 # The ngrok executable
 ngrok
+
+# Authentication token
+*.key

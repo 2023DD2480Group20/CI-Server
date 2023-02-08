@@ -7,6 +7,10 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
 /**
  * Notify
  * Commit status: the CI server sets the commit status or
@@ -32,10 +36,13 @@ public class Notify {
     //(failure, error, pending, success)
     public static String changeStatus (String sha, String state) {
         try {
+            File myObj = new File("app\\auth_token.key");
+            Scanner myReader = new Scanner(myObj);
+
             String json = "{\"state\":\"" + state + "\"}";
             
             //Authentication token is required to change the commit status
-            String authToken = "";
+            String authToken = myReader.nextLine();;
 
             HttpRequest postRequest = HttpRequest.newBuilder().uri(new URI("https://api.github.com/repos/2023DD2480Group20/Ci-Server/statuses/" + sha)).header("Authorization", "Bearer " + authToken).POST(BodyPublishers.ofString(json)).build();
 
