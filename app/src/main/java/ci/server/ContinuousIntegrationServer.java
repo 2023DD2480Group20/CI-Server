@@ -82,13 +82,20 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             BufferedReader reader = request.getReader();
             webhookData = getJSON(reader);
             branch = extractBranchName(webhookData);
+            System.out.println(branch);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         response.getWriter().println("CI job done");
+        response.getWriter().println("name: " + branch);
     }
 
+    /**
+     * Creates a JSONObject from a BufferedReader
+     * @param r BufferedReader to extract the JSONObject from
+     * @return JSONObject with data from Reader, null if it fails
+     */
     public JSONObject getJSON(BufferedReader r) {
         try {
             String line = r.readLine();
@@ -99,6 +106,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         return null;
     }
 
+    /**
+     * Extract a branch name from JSONObject holding github webhook data
+     * @param json The JSONObject holding the data
+     * @return The name of the branch in String format
+     */
     public static String extractBranchName(JSONObject json) {
         String temp = json.getString("ref");
         return temp.split("/")[2];
