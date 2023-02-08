@@ -79,9 +79,12 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         // 5. Update database
 
         try {
+            String type = request.getHeader("X-GitHub-Event");
+            System.out.println("Type :" + type);
             BufferedReader reader = request.getReader();
             webhookData = getJSON(reader);
-            branch = extractBranchName(webhookData);
+            branch = extractBranchName(webhookData, type);
+            
             System.out.println(branch);
         } catch (IOException e) {
             e.printStackTrace();
@@ -111,9 +114,13 @@ public class ContinuousIntegrationServer extends AbstractHandler {
      * @param json The JSONObject holding the data
      * @return The name of the branch in String format
      */
-    public static String extractBranchName(JSONObject json) {
-        String temp = json.getString("ref");
-        return temp.split("/")[2];
+    public static String extractBranchName(JSONObject json, String type) {
+        if(type.equals("push")){
+            String temp = json.getString("ref");
+            return temp.split("/")[2];
+        } else{
+            return "NOPE";
+        }  
     }
 
     // used to start the CI server in command line
