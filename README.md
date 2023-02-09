@@ -40,7 +40,9 @@ This requires the system to have **gradle version 7.2** or higher installed. Add
 * Hamcrest
 
 ### Contributions
-
+Marcus: My contributions are the following:
+* Implementation of notifications on the CI server through commit statuses
+* Implemented test for the notifications
 
 
 ### Essence
