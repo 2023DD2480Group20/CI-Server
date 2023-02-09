@@ -56,7 +56,10 @@ import org.json.*;
 public class ContinuousIntegrationServer extends AbstractHandler {
     // String that holds the branch name
     String branch = "";
+    // String that holds the commit's sha
     static String sha = "";
+
+    final String contentTypeError = "Webhook content-type not application/json, change it to the correct type in the webhook's settings!";
 
     // Object to hold the json fields from the webhook
     JSONObject webhookData;
@@ -83,13 +86,25 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         try {
             //Webhooks can have different types, ping for the first connection and then push for commit events
-            String type = request.getHeader("X-GitHub-Event");
-            BufferedReader reader = request.getReader();
-            System.out.println("The contents of the reader is:");
-            webhookData = getJSON(reader);
-            System.out.println("This is the json: " + webhookData);
-            branch = extractBranchName(webhookData, type);
-            sha = extractCommitSha(webhookData, type);
+
+            String eventType = request.getHeader("X-GitHub-Event");
+
+            //Gets the webhook's content-type setting
+            String contentType = request.getHeader("content-type");
+
+            if(contentType.equals("application/json")){
+                BufferedReader reader = request.getReader();
+                webhookData = getJSON(reader);
+                System.out.println("This is the json: " + webhookData);
+                branch = extractBranchName(webhookData, eventType);
+                sha = extractCommitSha(webhookData, eventType);
+            } else{
+                //If content-type is wrong, send error message in response and print in server's terminal¨
+                if(eventType.equals("push")){
+                    response.getWriter().println(contentTypeError);
+                    System.out.println(contentTypeError);
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
