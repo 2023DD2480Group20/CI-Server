@@ -16,6 +16,8 @@ import org.apache.commons.io.FileUtils;
  */
 public final class RepositoryBuilder {
     public final Repository repository;
+    public final File local_directory;
+
 
     /**
      * Class constructor
@@ -30,6 +32,8 @@ public final class RepositoryBuilder {
             deleteClone(cloneDirectoryPath);
         }
         this.repository = git_clone_repository(repoUrl, branchRef, cloneDirectoryPath);
+        //TODO not sure if I should getDirectory or other
+        this.local_directory = repository.getDirectory();
     }
 
     /**
