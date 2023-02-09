@@ -4,6 +4,7 @@ import DTO.TunnelsDTO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.checkerframework.checker.units.qual.C;
+import org.eclipse.jetty.util.log.Log;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -70,4 +71,16 @@ public class ContinuousIntegrationServerTest {
         assertThat(ContinuousIntegrationServer.extractBranchName(json,"ping"), equalTo(""));
     }
 
+    @Test void extractCommitShaTest(){
+        String payload = "";
+        JSONObject json = null;
+        try{
+            payload = new String(Files.readAllBytes(Paths.get("examplePayload.json")));
+            json = new JSONObject(payload);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        assertThat(ContinuousIntegrationServer.extractCommitSha(json,"push"), equalTo("22a43014e5d79a491990291a201d0f2afcbf61a5"));
+    }
 }
