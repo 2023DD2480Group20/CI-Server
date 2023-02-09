@@ -102,8 +102,9 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         } catch(Exception e){
             e.printStackTrace();
         }
-        System.out.println(cs == CommitStatus.SUCCESS);
+        System.out.println("The evaluation for this commit is: " + commmitStatusToString(cs));
 
+        notifyResults(commmitStatusToString(cs));
 
 
         response.getWriter().println("CI job done");
@@ -152,6 +153,22 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     public static void notifyResults (String res) {
         System.out.println(Notify.changeStatus(sha, res));
     }
+
+    public static String commmitStatusToString(CommitStatus commitStatus){
+        switch (commitStatus){
+            case SUCCESS:
+                return "success";
+            case FAILURE:
+                return "failure";
+            case ERROR:
+                return "error";
+            case PENDING:
+                return "pending";
+            default:
+                return "INVALID_COMMIT_STATUS";
+        }
+    }
+
 
     // used to start the CI server in command line
     public static void startServer() throws Exception {

@@ -36,7 +36,7 @@ public class Notify {
     //(failure, error, pending, success)
     public static String changeStatus (String sha, String state) {
         try {
-            File myObj = new File("app\\auth_token.key");
+            File myObj = new File("auth_token.key");
             Scanner myReader = new Scanner(myObj);
 
             String json = "{\"state\":\"" + state + "\"}";

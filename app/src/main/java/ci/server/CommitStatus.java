@@ -1,6 +1,8 @@
 package ci.server;
 
 public enum CommitStatus {
-    FAIL,
-    SUCCESS
+    FAILURE,
+    SUCCESS,
+    ERROR,
+    PENDING
 }

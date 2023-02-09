@@ -35,7 +35,7 @@ public final class Build{
         } catch (IOException e) {
             e.printStackTrace();
         } catch (BuildException e) {
-            result = CommitStatus.FAIL;
+            result = CommitStatus.FAILURE;
         } finally {
             try {
                 stdErr.close();
