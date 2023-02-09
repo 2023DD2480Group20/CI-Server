@@ -66,6 +66,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
+
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         baseRequest.setHandled(true);
@@ -84,6 +85,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             //Webhooks can have different types, ping for the first connection and then push for commit events
             String type = request.getHeader("X-GitHub-Event");
             BufferedReader reader = request.getReader();
+            System.out.println("The contents of the reader is:");
             webhookData = getJSON(reader);
             System.out.println("This is the json: " + webhookData);
             branch = extractBranchName(webhookData, type);
@@ -94,7 +96,6 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         CommitStatus cs = CommitStatus.SUCCESS;
         try {
-            System.out.println("Hello");
             // Repo URL should perhaps not be given hardcoded, we can try extracting it from the json.
             RepositoryBuilder clone = new RepositoryBuilder("https://github.com/2023DD2480Group20/CI-Server",
                     "refs/heads/" + branch, "temporary");
@@ -120,6 +121,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     public JSONObject getJSON(BufferedReader r) {
         try {
             String line = r.readLine();
+            System.out.println(line);
             return new JSONObject(line);
         } catch (IOException e) {
             e.printStackTrace();

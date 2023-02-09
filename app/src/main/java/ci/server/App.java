@@ -7,14 +7,11 @@ import java.io.InputStreamReader;
 public class App {
 
     public static void main(String[] args){
-//        try {
-//        ContinuousIntegrationServer.startServer();
-//        } catch (Exception e) {
-//        e.printStackTrace();
-//        }
-
-
-
+        try {
+        ContinuousIntegrationServer.startServer();
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
 
     }
 
