@@ -8,11 +8,11 @@ This is an assignment for the course DD2480 Software Engineering Fundamentals on
 
 ### Features
 
-* Can build a project after being triggered by a GitHub webhook push event (*Note:* the webhook's Content type needs to be "application/json"). It then clones the repo from the branch where the commit was made.
+* Can clone a project after a push triggers a GitHub webhook push event (*Note:* the webhook's content-type needs to be "application/json"). The HTTP payload recieved by the server in the push event is stored in a JSON object where each value is easily accessible. It then clones the repo from the branch where the commit was made. There are unit tests that, by using an example payload, assert that the methods for extracting branch name and creating the JSON object are done correctly. Additionally, there is a test that asserts that a repository can be properly cloned by the usage of an example repository. 
 
-* When building the project, it also runs the test automatically.
+* When building the project, it also runs the test automatically. The build process is done by performing a gradle build task on the earlier cloned repo, which makes both the compilation and the testing occur. The result of this process is stored as the commit status.
 
-* The server can notify about the results of the building and testing by setting the commit status.
+* The server can notify about the results of the building and testing by setting the commit status. The commit is updated by sending a POST request updating the status of the commit with the result of the earlier building stage. This feature is tested by assuring that a commit's sha is able to be extracted from the JSON object, and by asserting that the commit status can be set on an example commit.
 
 
 ### Build and Run

@@ -120,9 +120,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }
 
         CommitStatus cs = CommitStatus.SUCCESS;
+        RepoCloner clone = null;
         try {
             // Repo URL should perhaps not be given hardcoded, we can try extracting it from the json.
-            RepoCloner clone = new RepoCloner("https://github.com/2023DD2480Group20/CI-Server",
+            clone = new RepoCloner("https://github.com/2023DD2480Group20/CI-Server",
                     "refs/heads/" + branch, "temporary");
             cs = new Build(clone.local_directory).build();
         } catch(Exception e){
@@ -132,6 +133,8 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         notifyResults(commmitStatusToString(cs));
 
+        assert clone != null;
+        clone.deleteClone();
 
         response.getWriter().println("CI job done");
         response.getWriter().println("name: " + branch);
