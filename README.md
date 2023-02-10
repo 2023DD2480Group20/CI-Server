@@ -29,7 +29,9 @@ gradle test
 ```
 
 This requires the system to have **gradle version 7.2** or higher installed. Additionally, the project requires **Java 11** or newer. 
-
+  
+The program also requires a file called `auth_token.key` in the  `app` directory.
+This file must contain the personal access token of someone who has write access to the repo being tested.
 ### Credits
 
 * Gradle for building the project
