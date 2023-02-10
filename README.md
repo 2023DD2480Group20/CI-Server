@@ -44,6 +44,13 @@ Marcus: My contributions are the following:
 * Implementation of notifications on the CI server through commit statuses
 * Implemented test for the notifications
 
+Ronan: My contributions are the following:
+* Author of Repository Builder
+* Co-Author of Build
+* Documentation
+* Some bug fixing
+* Contributed to creating issues, reviewing pull requests and discussing implementations in the Github repo
+
 
 ### Essence
 
