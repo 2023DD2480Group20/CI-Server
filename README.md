@@ -51,6 +51,11 @@ Ronan: My contributions are the following:
 * Some bug fixing
 * Contributed to creating issues, reviewing pull requests and discussing implementations in the Github repo
 
+Pontus: My contributions are the following:
+* Handled the incoming HTTP request from the triggering of the webhook
+* Created JSON Object that holds the HTTP payload data, created functions that extract relevant data from the JSON and made tests for it
+* Wrote most of README file and the Essence paragraph
+* Helped out in the Github repo by creating issues, reviewing pull requests etc.
 
 ### Essence
 
