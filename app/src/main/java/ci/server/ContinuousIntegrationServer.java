@@ -65,12 +65,12 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     JSONObject webhookData;
 
     /**
-     * called to handle the webhook
+     * The function which handles incoming HTTP requests to the server
      *
-     * @param target
-     * @param baseRequest
-     * @param request
-     * @param response
+     * @param target The request's target (ususally name or URI)
+     * @param baseRequest Original unwrapped request object
+     * @param request The incoming HTTP request that is used to extract data
+     * @param response The HTTP response to be sent
      * @throws IOException
      * @throws ServletException
      */
@@ -96,7 +96,6 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         try {
             //Webhooks can have different types, ping for the first connection and then push for commit events
-
             String eventType = request.getHeader("X-GitHub-Event");
 
             //Gets the webhook's content-type setting
@@ -185,7 +184,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }  
     }
 
-
+    /**
+     * Calls the function in Notify.java to update the commit status according to the build and test results
+     * @param res The commit status to be sent in String format
+     */
     public static void notifyResults (String res) {
         Notify.changeStatus(sha, res);
     }
@@ -212,7 +214,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
 
     /**
-     * Used to start the CI server in command line
+     * Starts the CI server on port 8080
      * @throws Exception
      */
     public static void startServer() throws Exception {
