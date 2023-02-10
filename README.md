@@ -1,4 +1,6 @@
 # DD2480 Assignment 2: CI Server
+TESTLINE
+
 
 ### About
 
