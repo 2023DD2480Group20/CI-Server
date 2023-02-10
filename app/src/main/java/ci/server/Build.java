@@ -14,11 +14,21 @@ public final class Build{
     public final FileOutputStream stdErr = new FileOutputStream("buildStderr.txt");
     public final FileOutputStream stdOut = new FileOutputStream("buildStdout.txt");
 
+    /**
+     * Constructor of Build
+     *
+     * @param buildFolder folder where the program is located
+     * @throws FileNotFoundException, if file is not found
+     */
     public Build(File buildFolder) throws FileNotFoundException {
         this.buildFolder = buildFolder;
     }
 
-    //TODO should return the results needed by Notify
+    /**
+     * build the program
+     *
+     * @return the commit status of the build
+     */
     public CommitStatus build(){
         CommitStatus result = CommitStatus.SUCCESS;
 
