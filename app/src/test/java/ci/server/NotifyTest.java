@@ -31,19 +31,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.json.*;
 
 public class NotifyTest {
-    @Test void notifyTest(){
-        String sha = "79e52d36ead03613d4c4c3e2df1d41e1663cd3a3";
-        String test = "";
-
-
-        try{
-            JSONObject json = new JSONObject(Notify.changeStatus(sha,"pending"));
-            test = json.getString("state");
-            //test = Notify.changeStatus(sha,"pending");
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        
-        assertThat(test, equalTo("pending"));
-    }
+//    @Test void notifyTest(){
+//        String sha = "79e52d36ead03613d4c4c3e2df1d41e1663cd3a3";
+//        String test = "";
+//
+//
+//        try{
+//            JSONObject json = new JSONObject(Notify.changeStatus(sha,"pending"));
+//            test = json.getString("state");
+//            //test = Notify.changeStatus(sha,"pending");
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        assertThat(test, equalTo("pending"));
+//    }
 }

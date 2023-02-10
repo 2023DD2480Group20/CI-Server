@@ -95,9 +95,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             if(contentType.equals("application/json")){
                 BufferedReader reader = request.getReader();
                 webhookData = getJSON(reader);
-                System.out.println("This is the json: " + webhookData);
                 branch = extractBranchName(webhookData, eventType);
                 sha = extractCommitSha(webhookData, eventType);
+                System.out.println("The extracted branch name is: " + branch);
+                System.out.println("The extracted sha is: " + sha);
+
             } else{
                 //If content-type is wrong, send error message in response and print in server's terminal¨
                 if(eventType.equals("push")){
@@ -168,7 +170,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     }
 
     public static void notifyResults (String res) {
-        System.out.println(Notify.changeStatus(sha, res));
+        Notify.changeStatus(sha, res);
     }
 
     public static String commmitStatusToString(CommitStatus commitStatus){
