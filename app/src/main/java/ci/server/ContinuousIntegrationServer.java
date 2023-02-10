@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 
 import org.json.*;
@@ -123,7 +122,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         CommitStatus cs = CommitStatus.SUCCESS;
         try {
             // Repo URL should perhaps not be given hardcoded, we can try extracting it from the json.
-            RepositoryBuilder clone = new RepositoryBuilder("https://github.com/2023DD2480Group20/CI-Server",
+            RepoCloner clone = new RepoCloner("https://github.com/2023DD2480Group20/CI-Server",
                     "refs/heads/" + branch, "temporary");
             cs = new Build(clone.local_directory).build();
         } catch(Exception e){
