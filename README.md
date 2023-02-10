@@ -40,9 +40,30 @@ This requires the system to have **gradle version 7.2** or higher installed. Add
 * Hamcrest
 
 ### Contributions
+Marcus: My contributions are the following:
+* Implementation of notifications on the CI server through commit statuses
+* Implemented test for the notifications
+
+Ronan: My contributions are the following:
+* Author of Repository Builder
+* Co-Author of Build
+* Documentation
+* Some bug fixing
+* Contributed to creating issues, reviewing pull requests and discussing implementations in the Github repo
+
+Pontus: My contributions are the following:
+* Handled the incoming HTTP request from the triggering of the webhook
+* Created JSON Object that holds the HTTP payload data, created functions that extract relevant data from the JSON and made tests for it
+* Wrote most of README file and the Essence paragraph
+* Helped out in the Github repo by creating issues, reviewing pull requests etc.
 
 
-
+Yagiz: My contributions are the following:
+* Set up the build environment using gradle 
+* Worked on testing and bug fixing
+* Co-Author of Build
+* Put the different components together in the server
+* Helped with code reviews
 ### Essence
 
 By assessing our team according to the Essence standard, we can say that we are currently in the state of "Collaborating". The team is past the states of "Seeded" and "Formed" as the team itself has been defined already. There are set ways of working the team follows and the organizing is clear. Now, our team is also able to communicate openly about questions, issues, etc., and is also able to work on separate topics to form a cohesive unit. Furthermore, our team now knows a bit about each other and people can trust their teammates. Some parts of the state of "Performing" are reached; the team does what it is supposed to and can work without external help. But to fully reach it, our team might need to become a bit more flexible to adapt to different situations that might arise. The team should also make sure to not do any work that might go to waste to reach full efficiency.
