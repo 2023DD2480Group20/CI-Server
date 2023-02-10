@@ -33,7 +33,8 @@ public final class RepositoryBuilder {
         }
         this.repository = git_clone_repository(repoUrl, branchRef, cloneDirectoryPath);
         //TODO not sure if I should getDirectory or other
-        this.local_directory = repository.getDirectory();
+        assert repository != null;
+        this.local_directory = cloneDirectoryPath;
     }
 
     /**

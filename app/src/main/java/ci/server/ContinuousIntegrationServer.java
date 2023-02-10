@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 
 import org.json.*;
@@ -68,6 +69,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
+
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         baseRequest.setHandled(true);
@@ -84,6 +86,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         try {
             //Webhooks can have different types, ping for the first connection and then push for commit events
+
             String eventType = request.getHeader("X-GitHub-Event");
 
             //Gets the webhook's content-type setting
@@ -92,9 +95,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             if(contentType.equals("application/json")){
                 BufferedReader reader = request.getReader();
                 webhookData = getJSON(reader);
-                System.out.println("This is the json: " + webhookData);
                 branch = extractBranchName(webhookData, eventType);
                 sha = extractCommitSha(webhookData, eventType);
+                System.out.println("The extracted branch name is: " + branch);
+                System.out.println("The extracted sha is: " + sha);
+
             } else{
                 //If content-type is wrong, send error message in response and print in server's terminal¨
                 if(eventType.equals("push")){
@@ -102,10 +107,23 @@ public class ContinuousIntegrationServer extends AbstractHandler {
                     System.out.println(contentTypeError);
                 }
             }
-            
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        CommitStatus cs = CommitStatus.SUCCESS;
+        try {
+            // Repo URL should perhaps not be given hardcoded, we can try extracting it from the json.
+            RepositoryBuilder clone = new RepositoryBuilder("https://github.com/2023DD2480Group20/CI-Server",
+                    "refs/heads/" + branch, "temporary");
+            cs = new Build(clone.local_directory).build();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("The evaluation for this commit is: " + commmitStatusToString(cs));
+
+        notifyResults(commmitStatusToString(cs));
+
 
         response.getWriter().println("CI job done");
         response.getWriter().println("name: " + branch);
@@ -120,6 +138,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     public JSONObject getJSON(BufferedReader r) {
         try {
             String line = r.readLine();
+            System.out.println(line);
             return new JSONObject(line);
         } catch (IOException e) {
             e.printStackTrace();
@@ -151,8 +170,24 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     }
 
     public static void notifyResults (String res) {
-        System.out.println(Notify.changeStatus(sha, res));
+        Notify.changeStatus(sha, res);
     }
+
+    public static String commmitStatusToString(CommitStatus commitStatus){
+        switch (commitStatus){
+            case SUCCESS:
+                return "success";
+            case FAILURE:
+                return "failure";
+            case ERROR:
+                return "error";
+            case PENDING:
+                return "pending";
+            default:
+                return "INVALID_COMMIT_STATUS";
+        }
+    }
+
 
     // used to start the CI server in command line
     public static void startServer() throws Exception {

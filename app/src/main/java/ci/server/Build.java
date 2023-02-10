@@ -2,57 +2,49 @@ package ci.server;
 
 
 import java.io.*;
-import java.util.*;
 
+import org.gradle.tooling.GradleConnector;
+import org.gradle.tooling.*;
 /**
  * Find build config file in root directory and run commands
  * 
  */
 public final class Build{
-    private final File local_directory;
+    private final File buildFolder;
+    public final FileOutputStream stdErr = new FileOutputStream("buildStderr.txt");
+    public final FileOutputStream stdOut = new FileOutputStream("buildStdout.txt");
 
-    public Build(File local_directory){
-        this.local_directory = local_directory;
+    public Build(File buildFolder) throws FileNotFoundException {
+        this.buildFolder = buildFolder;
     }
 
     //TODO should return the results needed by Notify
-    public void build(){
-        try {
-            // In the continuous server, cd to the directory of the local file and build the project
-            String command = "cd " + local_directory.getAbsolutePath();
-            ProcessBuilder builder = new ProcessBuilder(command);
-            Process process = builder.start();
+    public CommitStatus build(){
+        CommitStatus result = CommitStatus.SUCCESS;
 
-            // wait for the process to finish
-            int exitCode = process.waitFor();
-            if(exitCode != 0){
-                return;
-            }
+        try(ProjectConnection connection = GradleConnector.newConnector().forProjectDirectory(buildFolder).connect()) {
 
-            command = "gradle build";
-            builder = new ProcessBuilder(command);
-            process = builder.start();
+            BuildProgressListener listener = new BuildProgressListener();
 
-            exitCode = process.waitFor();
-            if(exitCode != 0){
-                return;
-            }
-
-            // Read the output of the command line
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            FileWriter writer = new FileWriter("result.txt");
-            String line;
-
-            // Write the output of the command line to the result.txt
-            while ((line = reader.readLine()) != null){
-                writer.write(line + System.lineSeparator());
-            }
-            writer.close();
-
-
-        } catch (IOException | InterruptedException e) {
+            connection.newBuild()
+                    .forTasks("build")
+                    .addProgressListener(listener)
+                    .setStandardError(stdErr)
+                    .setStandardOutput(stdOut)
+                    .run();
+        } catch (IOException e) {
             e.printStackTrace();
+        } catch (BuildException e) {
+            result = CommitStatus.FAILURE;
+        } finally {
+            try {
+                stdErr.close();
+                stdOut.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        return result;
     }
 
 }

@@ -56,4 +56,13 @@ ngrok
 # Authentication token
 *.key
 
+# Ignore the files used for testing
 **/cloneTest/**
+
+# Ignore the temporary clone
+**/temporary/
+**/temporary/**
+
+# Ignore the output streams of the clone
+**/buildStderr.txt
+**/buildStdout.txt
