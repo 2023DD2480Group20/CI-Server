@@ -6,7 +6,6 @@ import org.eclipse.jgit.api.errors.*;
 import org.eclipse.jgit.lib.*;
 
 import java.io.*;
-import java.nio.file.*;
 
 import org.apache.commons.io.FileUtils;
 
@@ -14,7 +13,7 @@ import org.apache.commons.io.FileUtils;
  * All functions related to Git RepositoryBuilder (cloning and updating)
  *
  */
-public final class RepositoryBuilder {
+public final class RepoCloner {
     public final Repository repository;
     public final File local_directory;
 
@@ -26,7 +25,7 @@ public final class RepositoryBuilder {
      * @param branchRef the branch where the change has been made
      * @param ID ID to characterize the continuous integration
      */
-    public RepositoryBuilder(String repoUrl, String branchRef, String ID){
+    public RepoCloner(String repoUrl, String branchRef, String ID){
         File cloneDirectoryPath = new File("./" + ID);
         if(cloneDirectoryPath.length() != 0){
             deleteClone(cloneDirectoryPath);
@@ -37,7 +36,7 @@ public final class RepositoryBuilder {
     }
 
     /**
-     * clone the repo
+     * Clones the repo with the given parameters.
      *
      * @param repoUrl
      * @param branchRef
@@ -62,6 +61,12 @@ public final class RepositoryBuilder {
         return git_repository.getRepository();
     }
 
+
+
+
+    /**
+     *  Utility method to delete the clone of this repository builder
+     */
     public void deleteClone(){
         if(this.repository != null){
             try{
@@ -72,6 +77,12 @@ public final class RepositoryBuilder {
         }
     }
 
+
+
+    /**
+     * Utility method to delete the clone at a specific file
+     * @param file The directory in which the clone resides.
+     */
     public void deleteClone(File file){
         if(file != null){
             try{

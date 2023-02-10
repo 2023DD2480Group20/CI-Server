@@ -8,7 +8,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class RepositoryBuilderTest {
     @Test void cloneBranchTest(){
-        RepositoryBuilder repoBuilder = new RepositoryBuilder("https://github.com/YavizGuldalf/TestRepo",
+        RepoCloner repoBuilder = new RepoCloner("https://github.com/YavizGuldalf/TestRepo",
                 "refs/heads/newbranch", "cloneTest");
         Repository repo = repoBuilder.repository;
         try{
