@@ -64,6 +64,16 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     // Object to hold the json fields from the webhook
     JSONObject webhookData;
 
+    /**
+     * called to handle the webhook
+     *
+     * @param target
+     * @param baseRequest
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException
+     */
     public void handle(String target,
             Request baseRequest,
             HttpServletRequest request,
@@ -161,6 +171,12 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }  
     }
 
+    /**
+     * Extract a the commit sha from JSONObject holding github webhook data
+     * @param json The JSONObject holding the data
+     * @param type The event type, usually "push" or "ping"
+     * @return The commit sha in String format
+     */
     public static String extractCommitSha(JSONObject json, String type) {
         if(type.equals("push")){
             return json.getString("after");
@@ -169,10 +185,16 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }  
     }
 
+
     public static void notifyResults (String res) {
         Notify.changeStatus(sha, res);
     }
 
+    /**
+     * Convert the commit status to string
+     * @param commitStatus the commit status
+     * @return the string conversion
+     */
     public static String commmitStatusToString(CommitStatus commitStatus){
         switch (commitStatus){
             case SUCCESS:
@@ -189,7 +211,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     }
 
 
-    // used to start the CI server in command line
+    /**
+     * Used to start the CI server in command line
+     * @throws Exception
+     */
     public static void startServer() throws Exception {
         Server server = new Server(8080);
         server.setHandler(new ContinuousIntegrationServer());

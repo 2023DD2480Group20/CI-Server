@@ -32,7 +32,6 @@ public final class RepositoryBuilder {
             deleteClone(cloneDirectoryPath);
         }
         this.repository = git_clone_repository(repoUrl, branchRef, cloneDirectoryPath);
-        //TODO not sure if I should getDirectory or other
         assert repository != null;
         this.local_directory = cloneDirectoryPath;
     }
